@@ -1,0 +1,15 @@
+﻿<Window
+    x:Class="MimersView.Desktop.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Title="MimersView - Chat"
+    Width="525"
+    Height="350">
+    <Grid>
+        <TextBlock
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            FontSize="20"
+            Text="Velkommen til MimersView!" />
+    </Grid>
+</Window>
