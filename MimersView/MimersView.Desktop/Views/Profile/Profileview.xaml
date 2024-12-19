@@ -5,13 +5,198 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:MimersView.Desktop.Views.Profile"
             Background="#2C2C3A">
-    <Grid>
-        <TextBlock
-            Text="Velkommen til din profil!"
-            Foreground="White"
-            FontSize="24"
-            FontWeight="Bold"
-            HorizontalAlignment="Center"
-            VerticalAlignment="Center" />
+    
+    <Grid Margin="10">
+        <!-- Main container -->
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*" />
+            <ColumnDefinition Width="3*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <!-- Header -->
+        <TextBlock Text="Din Profil"
+                   Foreground="White"
+                   FontSize="30"
+                   FontWeight="Bold"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Top"
+                   Margin="0,20,0,20"
+                   Grid.ColumnSpan="2" />
+
+        <!-- Profile Image -->
+        <Border Grid.Row="1" Grid.Column="0"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Top"
+                Margin="20"
+                Width="200" Height="200"
+                Background="Gray"
+                CornerRadius="100">
+            <Image Source="https://via.placeholder.com/200"
+                   Stretch="UniformToFill"
+                   ClipToBounds="True" />
+        </Border>
+
+        <!-- User Info Section -->
+        <StackPanel Grid.Row="1" Grid.Column="1"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Left"
+                    Margin="20">
+            <TextBlock Text="{Binding Username}"
+                       Foreground="White"
+                       FontSize="20"
+                       FontWeight="Medium"
+                       Margin="0,10,0,10" />
+            <TextBlock Text="Email: john.doe@example.com"
+                       Foreground="White"
+                       FontSize="18"
+                       Margin="0,5,0,5" />
+            <TextBlock Text="Telefon: +45 12345678"
+                       Foreground="White"
+                       FontSize="18"
+                       Margin="0,5,0,5" />
+            <TextBlock Text="{Binding CurrentDate}"
+                       Foreground="White"
+                       FontSize="18"
+                       Margin="0,5,0,5" />
+        </StackPanel>
+
+        <!-- Light Settings Section -->
+        <TabControl SelectionChanged="TabControl_SelectionChanged" Grid.Row="2" Grid.ColumnSpan="2" Background="#1E1E2F" Foreground="White" Padding="10">
+            <!-- Tab Style -->
+            <TabControl.Resources>
+                <Style TargetType="TabItem">
+                    <Setter Property="Background" Value="#3A3A4A" />
+                    <Setter Property="Foreground" Value="White" />
+                    <Setter Property="Padding" Value="10,5" />
+                    <Setter Property="Margin" Value="2" />
+                    <Setter Property="FontSize" Value="16" />
+                    <Setter Property="FontWeight" Value="Bold" />
+                    <Setter Property="BorderBrush" Value="Transparent" />
+                    <Setter Property="BorderThickness" Value="1" />
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="TabItem">
+                                <Border Name="Border"
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            CornerRadius="5,5,0,0"
+                            Padding="{TemplateBinding Padding}">
+                                    <ContentPresenter HorizontalAlignment="Center"
+                                          VerticalAlignment="Center"
+                                          ContentSource="Header" />
+                                </Border>
+                                <ControlTemplate.Triggers>
+                                    <!-- Highlight active tab -->
+                                    <Trigger Property="IsSelected" Value="True">
+                                        <Setter TargetName="Border" Property="Background" Value="#5A5A6A" />
+                                        <Setter TargetName="Border" Property="BorderBrush" Value="#FFFFFF" />
+                                    </Trigger>
+                                    <!-- Dim inactive tab on mouse over -->
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter TargetName="Border" Property="Background" Value="#4A4A5A" />
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </TabControl.Resources>
+            <!-- General Tab -->
+            <TabItem Header="General">
+                <StackPanel x:Name="GeneralSettings" Visibility="Collapsed" Orientation="Horizontal" VerticalAlignment="Center" Margin="20" HorizontalAlignment="Center" >
+                    <StackPanel Orientation="Vertical" HorizontalAlignment="Center" Margin="10">
+                        <TextBlock Text="Theme:" Foreground="White" FontSize="16" Margin="0,10,0,0" />
+                        <ComboBox Width="150" Margin="0,10,0,0">
+                            <ComboBoxItem Content="Light" />
+                            <ComboBoxItem Content="Dark" />
+                        </ComboBox>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Vertical" HorizontalAlignment="Center" Margin="10">
+                        <TextBlock Text="Language:" Foreground="White" FontSize="16" Margin="0,10,0,0" />
+                        <ComboBox Width="150" Margin="0,10,0,0">
+                            <ComboBoxItem Content="English" />
+                            <ComboBoxItem Content="Dansk" />
+                        </ComboBox>
+                    </StackPanel>
+                </StackPanel>
+            </TabItem>
+
+            <!-- Notifications Tab -->
+            <TabItem Header="Notifications">
+                <StackPanel x:Name="NotificationsSettings" Visibility="Collapsed" Margin="20">
+                    <TextBlock Text="Notification Settings" 
+                           FontSize="18" 
+                           FontWeight="Bold" 
+                           Foreground="White" 
+                           Margin="0,0,0,20" />
+                    <CheckBox Content="Enable Email Notifications" Foreground="White" />
+                    <CheckBox Content="Enable SMS Notifications" Foreground="White" Margin="0,10,0,0" />
+                    <CheckBox Content="Enable Push Notifications" Foreground="White" Margin="0,10,0,0" />
+                </StackPanel>
+            </TabItem>
+
+            <!-- Data Tab -->
+            <TabItem Header="Data">
+                <StackPanel x:Name="DataSettings" Visibility="Collapsed" Margin="20">
+                    <TextBlock Text="Data Settings" 
+                           FontSize="18" 
+                           FontWeight="Bold" 
+                           Foreground="White" 
+                           Margin="0,0,0,20" />
+                    <CheckBox Content="Enable Data Backup" Foreground="White" />
+                    <CheckBox Content="Clear Cache on Exit" Foreground="White" Margin="0,10,0,0" />
+                    <CheckBox Content="Allow Data Sharing" Foreground="White" Margin="0,10,0,0" />
+                </StackPanel>
+            </TabItem>
+
+            <!-- Channels Tab -->
+            <TabItem Header="Channels">
+                <StackPanel x:Name="ChannelsSettings" Visibility="Collapsed" Margin="20">
+                    <TextBlock Text="Channel Settings" 
+                           FontSize="18" 
+                           FontWeight="Bold" 
+                           Foreground="White" 
+                           Margin="0,0,0,20" />
+                    <Button Content="Add Channel" Width="150" Margin="0,0,0,10" />
+                    <Button Content="Remove Channel" Width="150" Margin="0,10,0,0" />
+                </StackPanel>
+            </TabItem>
+
+            <!-- Security Tab -->
+            <TabItem Header="Security">
+                <StackPanel x:Name="SecuritySettings" Visibility="Collapsed" Orientation="Horizontal" Margin="20" VerticalAlignment="Center" HorizontalAlignment="Center">
+                    <StackPanel Orientation="Vertical" HorizontalAlignment="Center" Margin="10">
+                        <TextBlock Text="Security Settings" 
+                       FontSize="18" 
+                       FontWeight="Bold" 
+                       Foreground="White" 
+                       Margin="0,0,0,20" />
+                        <CheckBox Content="Enable 2FA" Foreground="White" Margin="0,5,0,5" />
+                        <CheckBox Content="Lock App When Inactive" Foreground="White" Margin="0,5,0,5" />
+                    </StackPanel>
+
+                    <StackPanel Orientation="Vertical" HorizontalAlignment="Center" Margin="10">
+                        <TextBlock Text="Change Password" 
+                       Foreground="White" 
+                       FontSize="16" 
+                       Margin="0,0,0,10" />
+                        <PasswordBox Width="200" Margin="0,0,0,10" />
+                        <Button Content="Update Password" 
+                    Width="150" 
+                    Background="#3A3A4A" 
+                    Foreground="White" 
+                    BorderThickness="0" 
+                    HorizontalAlignment="Center" />
+                    </StackPanel>
+                </StackPanel>
+            </TabItem>
+        </TabControl>
     </Grid>
 </UserControl>

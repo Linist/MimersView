@@ -1,22 +1,13 @@
 ﻿using System.Collections.ObjectModel;
-using System.Text;
 using System.Windows;
 using MimersView.Desktop.Views;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace MimersView.Desktop
 {
     public partial class MainWindow : Window
     {
         public ObservableCollection<Channel> Channels { get; set; } = new ObservableCollection<Channel>();
-        private string _username;
+        private readonly string _username;
 
         public MainWindow(string username)
         {
@@ -24,26 +15,40 @@ namespace MimersView.Desktop
             _username = username;
 
             // Populate sample channels
-            Channels.Add(new Channel { Name = "General" });
-            Channels.Add(new Channel { Name = "Development" });
-            Channels.Add(new Channel { Name = "Design" });
+            PopulateChannels();
 
             // Bind the channel list
             ChannelList.ItemsSource = Channels;
 
-            // Set the default content to the ProfileView
-            MainContent.Content = new Views.Profile.Profileview();
+            // Set the default content to the ProfileView with the username
+            var profileView = new Views.Profile.Profileview
+            {
+                Username = _username
+            };
+
+            MainContent.Content = profileView;
         }
 
+        // Populate the channel list with sample data
+        private void PopulateChannels()
+        {
+            Channels.Add(new Channel { Name = "General" });
+            Channels.Add(new Channel { Name = "Development" });
+            Channels.Add(new Channel { Name = "Design" });
+        }
+
+        // Handle channel selection changes
         private void ChannelList_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
         {
             if (ChannelList.SelectedItem is Channel selectedChannel)
             {
-                // Open the selected channel and pass the username
-                MainContent.Content = new Views.Channels.ChannelView(_username)
+                // Open the selected channel view and pass the username
+                var channelView = new Views.Channels.ChannelView(_username)
                 {
                     DataContext = selectedChannel
                 };
+
+                MainContent.Content = channelView;
             }
         }
     }
@@ -51,6 +56,6 @@ namespace MimersView.Desktop
     // Sample Channel model
     public class Channel
     {
-        public required string Name { get; set; }
+        public string Name { get; set; } = string.Empty;
     }
 }

@@ -3,9 +3,6 @@ using System.Windows.Input;
 
 namespace MimersView.Desktop.Views
 {
-    /// <summary>
-    /// Interaction logic for LoginWindow.xaml
-    /// </summary>
     public partial class LoginWindow : Window
     {
         public LoginWindow()
@@ -20,7 +17,7 @@ namespace MimersView.Desktop.Views
         private void Exit_Click(object sender, RoutedEventArgs e)
         {
             // Close the application
-            this.Close();
+            Application.Current.Shutdown();
         }
 
         // Event handler for the Login button

@@ -12,31 +12,39 @@
 
     <Grid>
         <!-- Right: Channel Overview -->
-        <Border
-            Width="250"
+        <Border Width="250"
             Background="#2C2C3A"
             CornerRadius="15"
             BorderThickness="2"
             BorderBrush="#4E5D94"
             HorizontalAlignment="Right"
             VerticalAlignment="Stretch"
-            Margin="10">
-            <ListView
-                x:Name="ChannelList"
-                Background="#1E1E2F"
-                BorderBrush="Transparent"
-                Foreground="White"
-                SelectionChanged="ChannelList_SelectionChanged">
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <TextBlock
-                            Text="{Binding Name}"
-                            Padding="10"
-                            FontSize="14"
-                            Foreground="White" />
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
+            Margin="30">
+            <StackPanel>
+                <TextBlock
+                        Margin="10"
+                        HorizontalAlignment="Center"
+                        FontSize="22"
+                        FontWeight="Bold"
+                        Foreground="#FFFFFF"
+                        Text="Channels" />
+                <ListView
+                    x:Name="ChannelList"
+                    Background="#1E1E2F"
+                    BorderBrush="Transparent"
+                    Foreground="White"
+                    SelectionChanged="ChannelList_SelectionChanged">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock
+                                Text="{Binding Name}"
+                                Padding="10"
+                                FontSize="14"
+                                Foreground="White" />
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackPanel>
         </Border>
 
         <!-- Center: Dynamic Content -->

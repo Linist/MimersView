@@ -5,9 +5,12 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:MimersView.Desktop.Views.Channels"
  Background="#2C2C3A">
+
+
     <Grid>
         <!-- Main Border with Rounded Corners -->
         <Border
+         
             Width="420"
             Height="580"
             Background="#2C2C3A"
