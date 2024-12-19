@@ -21,10 +21,15 @@ namespace MimersView.Desktop
             MessageList.Items.Add($"Velkommen, {_username}!");
         }
 
+        // Event handler for the Exit button
+        private void Exit_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
 
         private void SendMessage_Click(object sender, RoutedEventArgs e)
         {
-            string message = MessageInput.Text;
+            string message = MessageInput.Text.Trim();
 
             if (!string.IsNullOrWhiteSpace(message))
             {
@@ -33,6 +38,9 @@ namespace MimersView.Desktop
 
                 // Ryd inputboksen
                 MessageInput.Clear();
+
+                // Optionally scroll to the latest message
+                MessageList.ScrollIntoView(message);
             }
         }
         private void MessageInput_KeyDown(object sender, KeyEventArgs e)
@@ -73,14 +81,28 @@ namespace MimersView.Desktop
         }
 
 
+        // Event handler for smiley buttons
         private void Smiley_Click(object sender, RoutedEventArgs e)
         {
-            if (sender is Button button)
+            if (sender is System.Windows.Controls.Button button)
             {
-                // Tilføj emoji til inputfeltet
+                // Append the smiley to the message input field
                 MessageInput.Text += button.Content.ToString();
                 MessageInput.Focus();
-                MessageInput.CaretIndex = MessageInput.Text.Length; // Flyt caret til slutningen
+                MessageInput.CaretIndex = MessageInput.Text.Length; // Move caret to the end
+            }
+        }
+
+        // Handle keyboard shortcuts
+        private void ChatWindow_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
+        {
+            if (e.Key == System.Windows.Input.Key.Enter)
+            {
+                SendMessage_Click(this, null!);
+            }
+            else if (e.Key == System.Windows.Input.Key.Escape)
+            {
+                Exit_Click(this, null!);
             }
         }
     }
