@@ -1,6 +1,7 @@
 using System.Windows;
 using System.Windows.Input;
-using System.Windows.Controls;  
+using System.Windows.Controls;
+using System.Windows.Media;
 
 namespace MimersView.Desktop
 {
@@ -13,9 +14,13 @@ namespace MimersView.Desktop
             InitializeComponent();
             _username = username;
 
-            // Tilføj en velkomstbesked
+            // Set focus to the input box
+            MessageInput.Focus();
+
+            // Add a welcome message
             MessageList.Items.Add($"Velkommen, {_username}!");
         }
+
 
         private void SendMessage_Click(object sender, RoutedEventArgs e)
         {
@@ -51,10 +56,22 @@ namespace MimersView.Desktop
 
         private void AddMessage(string user, string message)
         {
-            // Tilføj beskeden og scroll ned
-            MessageList.Items.Add($"{user}: {message}");
-            MessageList.ScrollIntoView(MessageList.Items[MessageList.Items.Count - 1]);
+            string timestamp = DateTime.Now.ToString("HH:mm:ss");
+            string fullMessage = $"[{timestamp}] {user}: {message}";
+
+            var listBoxItem = new ListBoxItem
+            {
+                Content = fullMessage,
+                HorizontalContentAlignment = user == _username ? HorizontalAlignment.Right : HorizontalAlignment.Left,
+                Background = user == _username ? Brushes.LightBlue : Brushes.White,
+                Margin = new Thickness(5),
+                Padding = new Thickness(5)
+            };
+
+            MessageList.Items.Add(listBoxItem);
+            MessageList.ScrollIntoView(listBoxItem);
         }
+
 
         private void Smiley_Click(object sender, RoutedEventArgs e)
         {

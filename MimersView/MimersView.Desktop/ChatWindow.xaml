@@ -31,10 +31,26 @@
             BorderBrush="#CBD5E0"
             BorderThickness="1"
             FontSize="14"
-            ScrollViewer.VerticalScrollBarVisibility="Auto" />
+            ScrollViewer.VerticalScrollBarVisibility="Auto">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding}" TextWrapping="Wrap" />
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
 
-        <!--  Input og send-knap  -->
         <DockPanel Margin="10,0,10,60" VerticalAlignment="Bottom">
+            <Button
+                Width="80"
+                Margin="10,0,0,0"
+                Background="#4CAF50"
+                BorderBrush="#4CAF50"
+                Click="SendMessage_Click"
+                Content="Send"
+                Cursor="Hand"
+                DockPanel.Dock="Right"
+                FontWeight="Bold"
+                Foreground="White" />
             <TextBox
                 x:Name="MessageInput"
                 Height="35"
@@ -44,16 +60,6 @@
                 BorderBrush="#A0AEC0"
                 BorderThickness="1"
                 FontSize="14" />
-            <Button
-                Width="80"
-                Margin="10,0,0,0"
-                Background="#4CAF50"
-                BorderBrush="#4CAF50"
-                Click="SendMessage_Click"
-                Content="Send"
-                Cursor="Hand"
-                FontWeight="Bold"
-                Foreground="White" />
         </DockPanel>
 
         <!--  Smileys  -->
@@ -63,7 +69,6 @@
             HorizontalAlignment="Center"
             VerticalAlignment="Bottom"
             Background="#EDF2F7"
-            
             Orientation="Horizontal">
             <Button
                 Width="40"
