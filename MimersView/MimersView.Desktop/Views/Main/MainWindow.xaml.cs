@@ -8,6 +8,8 @@ namespace MimersView.Desktop
     public partial class MainWindow : Window
     {
         public ObservableCollection<Channel> Channels { get; set; } = [];
+        private readonly ObservableCollection<Channel> _allChannels = []; // Backup for filtering
+
         private readonly string _username;
 
         public MainWindow(string username)
@@ -30,18 +32,57 @@ namespace MimersView.Desktop
             MainContent.Content = profileView;
         }
 
+        // Event handler for the Exit button
+        private void Exit_Click(object sender, RoutedEventArgs e)
+        {
+            // Close the application
+            Application.Current.Shutdown();
+        }
         // Populate the channel list with sample data
         private void PopulateChannels()
         {
-            Channels.Add(new Channel { Name = "General" });
-            Channels.Add(new Channel { Name = "Development" });
-            Channels.Add(new Channel { Name = "Design" });
+            _allChannels.Add(new Channel { Name = "General" });
+            _allChannels.Add(new Channel { Name = "Development" });
+            _allChannels.Add(new Channel { Name = "Design" });
+
+            // Assign the master list to Channels
+            Channels = new ObservableCollection<Channel>(_allChannels);
+        }
+
+        // Add a new channel
+        private void AddChannel_Click(object sender, RoutedEventArgs e)
+        {
+            string newChannelName = $"Channel {Channels.Count + 1}";
+            var newChannel = new Channel { Name = newChannelName };
+            _allChannels.Add(newChannel);
+            UpdateChannelList();
+        }
+
+        // Remove the selected channel
+        private void RemoveChannel_Click(object sender, RoutedEventArgs e)
+        {
+            if (ChannelList.SelectedItem is Channel selectedChannel)
+            {
+                _allChannels.Remove(selectedChannel);
+                UpdateChannelList();
+            }
+            else
+            {
+                MessageBox.Show("Please select a channel to remove.", "No Channel Selected", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
+        }
+
+        // Update the displayed channel list
+        private void UpdateChannelList()
+        {
+            Channels = new ObservableCollection<Channel>(_allChannels);
+            ChannelList.ItemsSource = Channels;
         }
 
         // Handle channel selection changes
         private void ChannelList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (ChannelList.SelectedItem is MimersView.Desktop.Channel selectedChannel)
+            if (ChannelList.SelectedItem is Channel selectedChannel)
             {
                 var channelView = new Views.Channels.ChannelView(_username, selectedChannel);
                 MainContent.Content = channelView;
@@ -50,7 +91,12 @@ namespace MimersView.Desktop
 
         private void ProfileBtn_Click(object sender, RoutedEventArgs e)
         {
-            MainContent.Content = new Views.Profile.Profileview();
+            var profileView = new Views.Profile.Profileview
+            {
+                Username = _username
+            };
+
+            MainContent.Content = profileView;
         }
 
         private void ChannelsBtn_Click(object sender, RoutedEventArgs e)

@@ -41,7 +41,7 @@
                         FontSize="22"
                         FontWeight="Bold"
                         Foreground="#FFFFFF"
-                        Text="Velkommen til MimersView" />
+                        Text="MimersView" />
 
                     <TextBox
                         x:Name="UsernameBox"
