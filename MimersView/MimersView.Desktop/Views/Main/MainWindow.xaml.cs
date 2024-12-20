@@ -1,5 +1,7 @@
 ﻿using System.Collections.ObjectModel;
 using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Media;
 
 namespace MimersView.Desktop
 {
@@ -37,16 +39,11 @@ namespace MimersView.Desktop
         }
 
         // Handle channel selection changes
-        private void ChannelList_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
+        private void ChannelList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (ChannelList.SelectedItem is Channel selectedChannel)
+            if (ChannelList.SelectedItem is MimersView.Desktop.Channel selectedChannel)
             {
-                // Open the selected channel view and pass the username
-                var channelView = new Views.Channels.ChannelView(_username)
-                {
-                    DataContext = selectedChannel
-                };
-
+                var channelView = new Views.Channels.ChannelView(_username, selectedChannel);
                 MainContent.Content = channelView;
             }
         }

@@ -1,6 +1,7 @@
 ﻿namespace MimersView.Desktop.Models
 {
-    internal class Channel
+    public class Channel
     {
+        public required string Name { get; set; }
     }
 }

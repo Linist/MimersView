@@ -5,23 +5,22 @@ using System.Windows.Media;
 
 namespace MimersView.Desktop.Views.Channels
 {
-    /// <summary>
-    /// Interaction logic for ChannelView.xaml
-    /// </summary>
     public partial class ChannelView : UserControl
     {
-        private string _username; // Add this at the class level
+        private readonly string _username;
+        private readonly MimersView.Desktop.Channel selectedChannel;
 
-        public ChannelView(string username)
+        public ChannelView(string username, MimersView.Desktop.Channel channel)
         {
             InitializeComponent();
             _username = username;
+            selectedChannel = channel; // Assign the channel to the field
+            DataContext = selectedChannel; // Set the channel as DataContext for binding
 
             // Set focus to the input box
             MessageInput.Focus();
-
             // Add a welcome message
-            MessageList.Items.Add($"Velkommen, {_username}!");
+            MessageList.Items.Add($"Velkommen til denne channel {_username}!");
         }
 
         private void SendMessage_Click(object sender, RoutedEventArgs e)
@@ -80,12 +79,36 @@ namespace MimersView.Desktop.Views.Channels
         // Event handler for smiley buttons
         private void Smiley_Click(object sender, RoutedEventArgs e)
         {
-            if (sender is System.Windows.Controls.Button button)
+            if (sender is Button button)
             {
-                // Append the smiley to the message input field
                 MessageInput.Text += button.Content.ToString();
                 MessageInput.Focus();
-                MessageInput.CaretIndex = MessageInput.Text.Length; // Move caret to the end
+                MessageInput.CaretIndex = MessageInput.Text.Length; // Place caret at the end
+            }
+        }
+
+        private void ToggleSmileyPanel_Click(object sender, RoutedEventArgs e)
+        {
+            SmileyPanel.Visibility = SmileyPanel.Visibility == Visibility.Collapsed ? Visibility.Visible : Visibility.Collapsed;
+        }
+
+        private void UploadFile_Click(object sender, RoutedEventArgs e)
+        {
+            // Create OpenFileDialog
+            Microsoft.Win32.OpenFileDialog openFileDialog = new()
+            {
+                Title = "Select a File",
+                Filter = "All Files (*.*)|*.*",
+                Multiselect = false // Set to true if you want to allow multiple file selection
+            };
+
+            // Show the dialog and process the selected file
+            if (openFileDialog.ShowDialog() == true)
+            {
+                string selectedFile = openFileDialog.FileName;
+
+                // Add the file as a message to the message list (or handle it as required)
+                MessageList.Items.Add($"File uploaded: {selectedFile}");
             }
         }
 
