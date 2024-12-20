@@ -51,6 +51,38 @@ namespace MimersView.Desktop
                 MainContent.Content = channelView;
             }
         }
+
+        private void ProfileBtn_Click(object sender, RoutedEventArgs e)
+        {
+            MainContent.Content = new Views.Profile.Profileview();
+        }
+
+        private void ChannelsBtn_Click(object sender, RoutedEventArgs e)
+        {
+            MainContent.Content = new Views.ChannelOverview();
+        }
+
+        private void SettingsBtn_Click(object sender, RoutedEventArgs e)
+        {
+            MainContent.Content = new Views.SettingsView();
+        }
+
+        private void ClassesBtn_Click(object sender, RoutedEventArgs e)
+        {
+            MainContent.Content = new Views.ClassesView();
+        }
+
+        private void SchoolBtn_Click(object sender, RoutedEventArgs e)
+        {
+            MainContent.Content = new Views.SchoolView();
+        }
+
+        private void ClassmatesButton_Click(object sender, RoutedEventArgs e)
+        {
+            MainContent.Content = new Views.ClassmatesView();
+        }
+
+
     }
 
     // Sample Channel model

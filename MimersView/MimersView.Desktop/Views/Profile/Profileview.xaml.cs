@@ -8,8 +8,12 @@ namespace MimersView.Desktop.Views.Profile
 {
     public partial class Profileview : UserControl, INotifyPropertyChanged
     {
-        private string _username;
+
         private string _currentDate;
+
+        private string _username;
+
+
 
         private void TabControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
