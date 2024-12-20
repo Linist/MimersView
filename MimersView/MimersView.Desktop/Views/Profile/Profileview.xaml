@@ -3,68 +3,78 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:MimersView.Desktop.Views.Profile"
-            Background="#2C2C3A">
-    
-    <Grid Margin="10">
-        <!-- Main container -->
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="2*" />
-            <ColumnDefinition Width="3*" />
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="*" />
-            <RowDefinition Height="*" />
-        </Grid.RowDefinitions>
+             mc:Ignorable="d" 
+             Background="#2C2C3A">
 
-        <!-- Header -->
-        <TextBlock Text="Din Profil"
-                   Foreground="White"
-                   FontSize="30"
-                   FontWeight="Bold"
-                   HorizontalAlignment="Center"
-                   VerticalAlignment="Top"
-                   Margin="0,20,0,20"
-                   Grid.ColumnSpan="2" />
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <Grid Margin="20">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
 
-        <!-- Profile Image -->
-        <Border Grid.Row="1" Grid.Column="0"
-                HorizontalAlignment="Center"
-                VerticalAlignment="Top"
-                Margin="20"
-                Width="200" Height="200"
-                Background="Gray"
-                CornerRadius="100">
-            <Image Source="https://via.placeholder.com/200"
-                   Stretch="UniformToFill"
-                   ClipToBounds="True" />
-        </Border>
+            <!-- Header -->
+            <TextBlock Text="Din Profil"
+                       Foreground="White"
+                       FontSize="30"
+                       FontWeight="Bold"
+                       HorizontalAlignment="Center"
+                       Margin="0,20,0,20"
+                       Grid.Row="0" />
 
-        <!-- User Info Section -->
-        <StackPanel Grid.Row="1" Grid.Column="1"
-                    VerticalAlignment="Center"
-                    HorizontalAlignment="Left"
-                    Margin="20">
-            <TextBlock Text="{Binding Username}"
-                       Foreground="White"
-                       FontSize="20"
-                       FontWeight="Medium"
-                       Margin="0,10,0,10" />
-            <TextBlock Text="Email: john.doe@example.com"
-                       Foreground="White"
-                       FontSize="18"
-                       Margin="0,5,0,5" />
-            <TextBlock Text="Telefon: +45 12345678"
-                       Foreground="White"
-                       FontSize="18"
-                       Margin="0,5,0,5" />
-            <TextBlock Text="{Binding CurrentDate}"
-                       Foreground="White"
-                       FontSize="18"
-                       Margin="0,5,0,5" />
-        </StackPanel>
+            <!-- General Information Section -->
+            <Border Background="#1E1E2F" CornerRadius="10" Padding="20" Margin="0,10,0,10" Grid.Row="1">
+                <StackPanel>
+                    <!-- Profile Picture -->
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="0,0,0,10">
+                        <Border Width="100" Height="100" Background="#4E5D94" CornerRadius="50" Margin="10">
+                            <Image Source="https://via.placeholder.com/100" Stretch="UniformToFill" ClipToBounds="True" />
+                        </Border>
+                        <StackPanel Margin="10">
+                            <Button Content="Upload" Background="#4E5D94" Foreground="White" BorderBrush="Transparent" Width="100" Margin="0,5" />
+                            <Button Content="Remove" Background="#FF5555" Foreground="White" BorderBrush="Transparent" Width="100" />
+                        </StackPanel>
+                    </StackPanel>
 
-        
-    </Grid>
+                    <!-- Name and Username -->
+                    <TextBlock Text="Navn: John Doe" Foreground="White" FontSize="18" Margin="0,5" />
+                    <TextBlock Text="Brugernavn: johndoe123" Foreground="White" FontSize="18" Margin="0,5" />
+
+                    <!-- Contact Information -->
+                    <TextBlock Text="Email: john.doe@example.com" Foreground="White" FontSize="16" Margin="0,5" />
+                    <TextBlock Text="Telefon: +45 12345678" Foreground="White" FontSize="16" Margin="0,5" />
+                    <TextBlock Text="Social Links: Not Linked" Foreground="#A0AEC0" FontSize="14" Margin="0,5" />
+
+                    <!-- Role/Position -->
+                    <TextBlock Text="Rolle: Student" Foreground="White" FontSize="16" Margin="0,5" />
+                </StackPanel>
+            </Border>
+
+            <!-- Personal Details Section -->
+            <Border Background="#1E1E2F" CornerRadius="10" Padding="20" Margin="0,10,0,10" Grid.Row="2">
+                <StackPanel>
+                    <TextBlock Text="Bio:" Foreground="White" FontSize="18" FontWeight="Bold" Margin="0,0,0,10" />
+                    <TextBlock Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit." TextWrapping="Wrap" Foreground="#A0AEC0" FontSize="14" Margin="0,5" />
+
+                    <!-- Address -->
+                    <TextBlock Text="Adresse: Odense, Denmark" Foreground="White" FontSize="16" Margin="0,5" />
+
+                    <!-- Birthday and Language Preferences -->
+                    <TextBlock Text="Fødselsdag: 01-01-1990" Foreground="White" FontSize="16" Margin="0,5" />
+                    <TextBlock Text="Sprog: Dansk, Engelsk" Foreground="White" FontSize="16" Margin="0,5" />
+                </StackPanel>
+            </Border>
+
+            <!-- Activity and Engagement Section -->
+            <Border Background="#1E1E2F" CornerRadius="10" Padding="20" Margin="0,10,0,10" Grid.Row="3">
+                <StackPanel>
+                    <TextBlock Text="Aktivitet:" Foreground="White" FontSize="18" FontWeight="Bold" Margin="0,0,0,10" />
+                    <TextBlock Text="Seneste indlæg: 5 minutter siden" Foreground="White" FontSize="16" Margin="0,5" />
+                    <TextBlock Text="Badges: 3 earned badges" Foreground="White" FontSize="16" Margin="0,5" />
+                    <TextBlock Text="Forbindelser: 12 Classmates" Foreground="White" FontSize="16" Margin="0,5" />
+                </StackPanel>
+            </Border>
+        </Grid>
+    </ScrollViewer>
 </UserControl>

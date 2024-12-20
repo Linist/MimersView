@@ -3,10 +3,96 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:MimersView.Desktop.Views"
+             xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
-            
+    <Grid Margin="10">
+        <!-- Define layout with rows -->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <!-- Header -->
+            <RowDefinition Height="*" />
+            <!-- Student list -->
+        </Grid.RowDefinitions>
+
+        <!-- Header -->
+        <TextBlock
+            Text="Classmates"
+            FontSize="24"
+            FontWeight="Bold"
+            Foreground="White"
+            HorizontalAlignment="Left"
+            Margin="10" />
+
+        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
+            <ListView
+        x:Name="ClassmatesListView"
+        Background="#2C2C3A"
+        BorderBrush="Transparent"
+        Foreground="White"
+        Margin="0,10,0,0"
+        VerticalAlignment="Stretch"
+        HorizontalAlignment="Stretch"
+        HorizontalContentAlignment="Stretch"
+        Padding="5"
+        d:ItemsSource="{d:SampleData ItemCount=5}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Margin="5">
+                            <!-- Define two columns: one for the name and one for the buttons -->
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <!-- Student Name -->
+                                <ColumnDefinition Width="Auto" />
+                                <!-- Buttons -->
+                            </Grid.ColumnDefinitions>
+
+                            <!-- Student Name -->
+                            <TextBlock
+                        Text="{Binding Name}"
+                        VerticalAlignment="Center"
+                        FontSize="16"
+                        Foreground="White"
+                        Margin="5,0"
+                        Grid.Column="0" />
+
+                            <!-- Buttons -->
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Column="1" >
+                                <!-- Direct Message Button -->
+                                <Button
+                            Width="25"
+                            Height="25"
+                            Background="Transparent"
+                            BorderBrush="Transparent"
+                            Click="DirectMessage_Click">
+                                    <iconPacks:PackIconMaterial Kind="EmailOutline" Width="20" Height="20" Foreground="White" />
+                                </Button>
+
+                                <!-- Start Channel Button -->
+                                <Button
+                            Width="25"
+                            Height="25"
+                            Background="Transparent"
+                            BorderBrush="Transparent"
+                            Click="StartChannel_Click">
+                                    <iconPacks:PackIconMaterial Kind="MessageTextOutline" Width="20" Height="20" Foreground="White" />
+                                </Button>
+
+                                <!-- Settings Button -->
+                                <Button
+                            Width="25"
+                            Height="25"
+                            Background="Transparent"
+                            BorderBrush="Transparent"
+                            Click="Settings_Click">
+                                    <iconPacks:PackIconMaterial Kind="DotsHorizontal" Width="20" Height="20" Foreground="White" />
+                                </Button>
+                            </StackPanel>
+                        </Grid>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </ScrollViewer>
+
     </Grid>
 </UserControl>

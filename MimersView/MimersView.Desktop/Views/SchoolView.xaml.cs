@@ -1,28 +1,43 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace MimersView.Desktop.Views
 {
-    /// <summary>
-    /// Interaction logic for SchoolView.xaml
-    /// </summary>
     public partial class SchoolView : UserControl
     {
         public SchoolView()
         {
             InitializeComponent();
+        }
+
+        private void LearnMore_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("More information about learning and wellbeing.", "Learn More", MessageBoxButton.OK, MessageBoxImage.Information);
+        }
+
+        private void UNGoals_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("More information about UN goals certification.", "Learn More", MessageBoxButton.OK, MessageBoxImage.Information);
+        }
+
+        private void PBL_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("More information about Project-Based Learning.", "Learn More", MessageBoxButton.OK, MessageBoxImage.Information);
+        }
+
+        private void FruitProgram_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("More information about the Fruit Program.", "Learn More", MessageBoxButton.OK, MessageBoxImage.Information);
+        }
+
+        private void NewStudent_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("More information for new students.", "Learn More", MessageBoxButton.OK, MessageBoxImage.Information);
+        }
+
+        private void Facebook_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Visit our Facebook page.", "Learn More", MessageBoxButton.OK, MessageBoxImage.Information);
         }
     }
 }

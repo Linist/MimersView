@@ -3,10 +3,67 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:MimersView.Desktop.Views"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-            
+        <!-- Responsive Layout with Columns -->
+        <UniformGrid Columns="3" Rows="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10">
+            <!-- Box 1: Learning and Wellbeing -->
+            <Border Background="#2C2C3A" CornerRadius="10" BorderThickness="1" BorderBrush="#4E5D94" Margin="10">
+                <StackPanel Margin="10">
+                    <TextBlock Text="Læring og trivsel" FontSize="18" FontWeight="Bold" Foreground="White" />
+                    <TextBlock Text="Velkommen til Højby Skole" FontSize="14" Foreground="#A0AEC0" Margin="0,5,0,10" />
+                    <TextBlock Text="Højby Skole er en 2-sporet skole fra 0. -9. årgang placeret i Odense S. Hos os er der plads til faglighed, fællesskab og forskellighed." 
+                               TextWrapping="Wrap" FontSize="12" Foreground="#A0AEC0" Margin="0,0,0,10" />
+                    <Button Content="Læs mere" Background="#4E5D94" Foreground="White" BorderBrush="Transparent" Click="LearnMore_Click" />
+                </StackPanel>
+            </Border>
+
+            <!-- Box 2: UN Goals Certification -->
+            <Border Background="#2C2C3A" CornerRadius="10" BorderThickness="1" BorderBrush="#4E5D94" Margin="10">
+                <StackPanel Margin="10">
+                    <TextBlock Text="Verdensmål" FontSize="18" FontWeight="Bold" Foreground="White" />
+                    <TextBlock Text="Højby Skole er verdensmålscertificeret" FontSize="14" Foreground="#A0AEC0" Margin="0,5,0,10" />
+                    <Button Content="Læs mere" Background="#4E5D94" Foreground="White" BorderBrush="Transparent" Click="UNGoals_Click" />
+                </StackPanel>
+            </Border>
+
+            <!-- Box 3: PBL -->
+            <Border Background="#2C2C3A" CornerRadius="10" BorderThickness="1" BorderBrush="#4E5D94" Margin="10">
+                <StackPanel Margin="10">
+                    <TextBlock Text="PBL - Projekt baseret læring" FontSize="18" FontWeight="Bold" Foreground="White" />
+                    <TextBlock Text="PBL er fremtidens undervisning og vi er med!" FontSize="14" Foreground="#A0AEC0" Margin="0,5,0,10" />
+                    <Button Content="Læs mere" Background="#4E5D94" Foreground="White" BorderBrush="Transparent" Click="PBL_Click" />
+                </StackPanel>
+            </Border>
+
+            <!-- Box 4: Fruit Program -->
+            <Border Background="#2C2C3A" CornerRadius="10" BorderThickness="1" BorderBrush="#4E5D94" Margin="10">
+                <StackPanel Margin="10">
+                    <TextBlock Text="Frugtordning" FontSize="18" FontWeight="Bold" Foreground="White" />
+                    <TextBlock Text="Højby Skole deltager i EU-Skoleordningen for frugt og grønt." TextWrapping="Wrap" FontSize="12" Foreground="#A0AEC0" Margin="0,5,0,10" />
+                    <Button Content="Læs mere" Background="#4E5D94" Foreground="White" BorderBrush="Transparent" Click="FruitProgram_Click" />
+                </StackPanel>
+            </Border>
+
+            <!-- Box 5: New at Højby Skole -->
+            <Border Background="#2C2C3A" CornerRadius="10" BorderThickness="1" BorderBrush="#4E5D94" Margin="10">
+                <StackPanel Margin="10">
+                    <TextBlock Text="Ny på Højby Skole" FontSize="18" FontWeight="Bold" Foreground="White" />
+                    <TextBlock Text="Et skoleskift er en stor beslutning, der skal bygge på et oplyst grundlag." 
+                               TextWrapping="Wrap" FontSize="12" Foreground="#A0AEC0" Margin="0,5,0,10" />
+                    <Button Content="Læs mere" Background="#4E5D94" Foreground="White" BorderBrush="Transparent" Click="NewStudent_Click" />
+                </StackPanel>
+            </Border>
+
+            <!-- Box 6: Facebook -->
+            <Border Background="#2C2C3A" CornerRadius="10" BorderThickness="1" BorderBrush="#4E5D94" Margin="10">
+                <StackPanel Margin="10">
+                    <TextBlock Text="Facebook" FontSize="18" FontWeight="Bold" Foreground="White" />
+                    <TextBlock Text="Følg med i skolens liv på Facebook." TextWrapping="Wrap" FontSize="12" Foreground="#A0AEC0" Margin="0,5,0,10" />
+                    <Button Content="Læs mere" Background="#4E5D94" Foreground="White" BorderBrush="Transparent" Click="Facebook_Click" />
+                </StackPanel>
+            </Border>
+        </UniformGrid>
     </Grid>
 </UserControl>
