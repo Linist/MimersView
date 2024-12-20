@@ -1,24 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace MimersView.Desktop.Views
 {
     public partial class ChannelOverview : UserControl
     {
-        public ObservableCollection<Channel> Channels { get; set; } = new ObservableCollection<Channel>();
+        public ObservableCollection<Channel> Channels { get; set; } = [];
 
         public ChannelOverview()
         {
@@ -39,7 +27,7 @@ namespace MimersView.Desktop.Views
 
             // Filter channels
             var filteredChannels = Channels
-                .Where(c => c.Name.ToLower().Contains(searchText))
+                .Where(c => c.Name.Contains(searchText, StringComparison.CurrentCultureIgnoreCase))
                 .ToList();
 
             ChannelListView.ItemsSource = filteredChannels;

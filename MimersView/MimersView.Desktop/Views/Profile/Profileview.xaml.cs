@@ -1,18 +1,14 @@
-﻿using System;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
-using System.Windows;
 using System.Windows.Controls;
 
 namespace MimersView.Desktop.Views.Profile
 {
     public partial class Profileview : UserControl, INotifyPropertyChanged
     {
-
         private string _username;
         private DateTime _currentDate;
 
-        // Properties for Username and CurrentDate (INotifyPropertyChanged)
         public string Username
         {
             get => _username;
@@ -39,7 +35,6 @@ namespace MimersView.Desktop.Views.Profile
             InitializeComponent();
             DataContext = this;
             _username = "Guest";
-            // Set current date to be displayed
             CurrentDate = DateTime.Now;
         }
 

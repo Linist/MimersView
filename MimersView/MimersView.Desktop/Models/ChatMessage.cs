@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace MimersView.Desktop.Models
+﻿namespace MimersView.Desktop.Models
 {
-    class ChatMessage
+    internal class ChatMessage
     {
     }
 }

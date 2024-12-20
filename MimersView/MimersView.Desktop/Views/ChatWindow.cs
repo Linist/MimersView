@@ -1,6 +1,6 @@
 using System.Windows;
-using System.Windows.Input;
 using System.Windows.Controls;
+using System.Windows.Input;
 using System.Windows.Media;
 
 namespace MimersView.Desktop
@@ -43,6 +43,7 @@ namespace MimersView.Desktop
                 MessageList.ScrollIntoView(message);
             }
         }
+
         private void MessageInput_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Enter) // Send besked ved tryk på Enter
@@ -79,7 +80,6 @@ namespace MimersView.Desktop
             MessageList.Items.Add(listBoxItem);
             MessageList.ScrollIntoView(listBoxItem);
         }
-
 
         // Event handler for smiley buttons
         private void Smiley_Click(object sender, RoutedEventArgs e)

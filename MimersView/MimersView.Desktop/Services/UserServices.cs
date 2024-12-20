@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace MimersView.Desktop.Services
+﻿namespace MimersView.Desktop.Services
 {
-    class UserServices
+    internal class UserServices
     {
     }
 }

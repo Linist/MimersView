@@ -1,17 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace MimersView.Desktop.Views
 {
@@ -44,15 +32,19 @@ namespace MimersView.Desktop.Views
                         case "General":
                             GeneralSettings.Visibility = Visibility.Visible;
                             break;
+
                         case "Notifications":
                             NotificationsSettings.Visibility = Visibility.Visible;
                             break;
+
                         case "Data":
                             DataSettings.Visibility = Visibility.Visible;
                             break;
+
                         case "Channels":
                             ChannelsSettings.Visibility = Visibility.Visible;
                             break;
+
                         case "Security":
                             SecuritySettings.Visibility = Visibility.Visible;
                             break;

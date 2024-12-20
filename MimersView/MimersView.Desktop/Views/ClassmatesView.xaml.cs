@@ -49,6 +49,6 @@ namespace MimersView.Desktop.Views
 
     public class Classmate
     {
-        public required string Name { get; set; } // Student name
+        public string Name { get; set; } // Student name
     }
 }

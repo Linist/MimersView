@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace MimersView.Desktop.ViewModels
+﻿namespace MimersView.Desktop.ViewModels
 {
-    class MainVM
+    internal class MainVM
     {
     }
 }

@@ -1,17 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace MimersView.Desktop.Views.Channels
 {
@@ -33,7 +23,6 @@ namespace MimersView.Desktop.Views.Channels
             // Add a welcome message
             MessageList.Items.Add($"Velkommen, {_username}!");
         }
-
 
         private void SendMessage_Click(object sender, RoutedEventArgs e)
         {
@@ -87,7 +76,6 @@ namespace MimersView.Desktop.Views.Channels
             MessageList.Items.Add(listBoxItem);
             MessageList.ScrollIntoView(listBoxItem);
         }
-
 
         // Event handler for smiley buttons
         private void Smiley_Click(object sender, RoutedEventArgs e)

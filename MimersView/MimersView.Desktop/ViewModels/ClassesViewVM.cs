@@ -6,7 +6,7 @@ namespace MimersView.Desktop.ViewModels
     public class ClassesViewVM
     {
         // Observable collection for binding
-        public ObservableCollection<SchoolClass> Classes { get; set; } = new ObservableCollection<SchoolClass>();
+        public ObservableCollection<SchoolClass> Classes { get; set; } = [];
 
         public ClassesViewVM()
         {
@@ -80,7 +80,6 @@ namespace MimersView.Desktop.ViewModels
                 ContactPerson = "Kasper Hansen",
                 Description = "Focus on physical education, teamwork, and maintaining a healthy lifestyle."
             });
-
         }
     }
 }

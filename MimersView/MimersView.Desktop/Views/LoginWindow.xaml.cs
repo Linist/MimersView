@@ -32,7 +32,6 @@ namespace MimersView.Desktop.Views
 
             // Close the LoginWindow
             this.Close();
-        
 
             // Uncomment and implement production logic below when ready
             /*

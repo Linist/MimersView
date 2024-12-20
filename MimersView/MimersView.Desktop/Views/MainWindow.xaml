@@ -1,8 +1,8 @@
 ﻿<Window
     x:Class="MimersView.Desktop.MainWindow"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     Title="MimersView - Main"
     Width="900"
     Height="600"
@@ -19,12 +19,11 @@
             <!-- Main content area -->
         </Grid.RowDefinitions>
 
-
         <!-- Top: Menu Panel -->
         <Border
             Grid.Row="0"
             Height="60"
-            Background="Transparent" 
+            Background="Transparent"
             HorizontalAlignment="Stretch"
             VerticalAlignment="Top"
             CornerRadius="15,15,0,0">
@@ -104,7 +103,7 @@
         </Border>
 
         <!-- Right: Channel Overview -->
-        <Border 
+        <Border
             Grid.Row="1"
             Width="250"
             Background="#2C2C3A"

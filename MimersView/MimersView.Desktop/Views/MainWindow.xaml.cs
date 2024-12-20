@@ -1,12 +1,11 @@
 ﻿using System.Collections.ObjectModel;
 using System.Windows;
-using MimersView.Desktop.Views;
 
 namespace MimersView.Desktop
 {
     public partial class MainWindow : Window
     {
-        public ObservableCollection<Channel> Channels { get; set; } = new ObservableCollection<Channel>();
+        public ObservableCollection<Channel> Channels { get; set; } = [];
         private readonly string _username;
 
         public MainWindow(string username)
@@ -81,8 +80,6 @@ namespace MimersView.Desktop
         {
             MainContent.Content = new Views.ClassmatesView();
         }
-
-
     }
 
     // Sample Channel model
