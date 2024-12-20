@@ -27,7 +27,7 @@ namespace MimersView.Desktop.Views
             string username = UsernameBox.Text.Trim();
 
             // Open the MainWindow and pass the username
-            MainWindow mainWindow = new MainWindow(username);
+            MainWindow mainWindow = new(username);
             mainWindow.Show();
 
             // Close the LoginWindow
