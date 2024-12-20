@@ -9,48 +9,8 @@ namespace MimersView.Desktop.Views.Profile
     public partial class Profileview : UserControl, INotifyPropertyChanged
     {
 
-        private string _currentDate;
-
         private string _username;
-
-
-
-        private void TabControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            // Collapse all settings initially
-            GeneralSettings.Visibility = Visibility.Collapsed;
-            NotificationsSettings.Visibility = Visibility.Collapsed;
-            DataSettings.Visibility = Visibility.Collapsed;
-            ChannelsSettings.Visibility = Visibility.Collapsed;
-            SecuritySettings.Visibility = Visibility.Collapsed;
-
-            // Show the selected tab's settings
-            if (e.Source is TabControl tabControl)
-            {
-                if (tabControl.SelectedItem is TabItem selectedTab)
-                {
-                    switch (selectedTab.Header.ToString())
-                    {
-                        case "General":
-                            GeneralSettings.Visibility = Visibility.Visible;
-                            break;
-                        case "Notifications":
-                            NotificationsSettings.Visibility = Visibility.Visible;
-                            break;
-                        case "Data":
-                            DataSettings.Visibility = Visibility.Visible;
-                            break;
-                        case "Channels":
-                            ChannelsSettings.Visibility = Visibility.Visible;
-                            break;
-                        case "Security":
-                            SecuritySettings.Visibility = Visibility.Visible;
-                            break;
-                    }
-                }
-            }
-        }
-
+        private DateTime _currentDate;
 
         // Properties for Username and CurrentDate (INotifyPropertyChanged)
         public string Username
@@ -59,17 +19,17 @@ namespace MimersView.Desktop.Views.Profile
             set
             {
                 _username = value;
-                OnPropertyChanged();
+                OnPropertyChanged(nameof(Username));
             }
         }
 
-        public string CurrentDate
+        public DateTime CurrentDate
         {
             get => _currentDate;
             set
             {
                 _currentDate = value;
-                OnPropertyChanged();
+                OnPropertyChanged(nameof(CurrentDate));
             }
         }
 
@@ -78,16 +38,16 @@ namespace MimersView.Desktop.Views.Profile
         {
             InitializeComponent();
             DataContext = this;
-            GeneralSettings.Visibility = Visibility.Visible; // Default tab content
+            _username = "Guest";
             // Set current date to be displayed
-            CurrentDate = DateTime.Now.ToString("dd/MM/yyyy");
+            CurrentDate = DateTime.Now;
         }
 
         // INotifyPropertyChanged implementation
-        public event PropertyChangedEventHandler PropertyChanged;
+        public event PropertyChangedEventHandler? PropertyChanged;
 
         // OnPropertyChanged method to notify the UI of changes
-        protected void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        protected void OnPropertyChanged([CallerMemberName] string? propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }

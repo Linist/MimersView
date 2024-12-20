@@ -24,7 +24,7 @@
         <Border
             Grid.Row="0"
             Height="60"
-            Background="#2C2C3A80" 
+            Background="Transparent" 
             HorizontalAlignment="Stretch"
             VerticalAlignment="Top"
             CornerRadius="15,15,0,0">

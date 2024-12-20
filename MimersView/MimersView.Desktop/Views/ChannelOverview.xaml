@@ -3,10 +3,85 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:MimersView.Desktop.Views"
+             xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
-            
+    <Grid Margin="10">
+        <!-- Define layout with rows -->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <!-- Search bar -->
+            <RowDefinition Height="*" />
+            <!-- List of channels -->
+        </Grid.RowDefinitions>
+
+        <!-- Search Bar -->
+        <DockPanel Grid.Row="0" Margin="10">
+            <TextBox
+                x:Name="SearchBox"
+                Width="300"
+                Height="30"
+                VerticalAlignment="Center"
+                Margin="0,0,10,0"
+                Background="#1E1E2F"
+                Foreground="White"
+                BorderBrush="#4E5D94"
+                BorderThickness="2"
+                TextChanged="SearchBox_TextChanged" />
+        </DockPanel>
+
+        <!-- List of Channels -->
+        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
+            <ListView
+                x:Name="ChannelListView"
+                Background="#2C2C3A"
+                BorderBrush="Transparent"
+                Foreground="White"
+                Margin="0,10,0,0"
+                VerticalAlignment="Stretch"
+                HorizontalAlignment="Stretch"
+                Padding="5">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <DockPanel Margin="5" VerticalAlignment="Center">
+                            <!-- Channel Name -->
+                            <TextBlock
+                                Text="{Binding Name}"
+                                VerticalAlignment="Center"
+                                FontSize="16"
+                                Foreground="White"
+                                Margin="5,0,10,0"
+                                DockPanel.Dock="Left" />
+
+                            <!-- Edit Button -->
+                            <Button
+                                Width="25"
+                                Height="25"
+                                Background="Transparent"
+                                BorderBrush="Transparent"
+                                HorizontalAlignment="Right"
+                                VerticalAlignment="Center"
+                                DockPanel.Dock="Right"
+                                Click="EditChannel_Click">
+                                <iconPacks:PackIconMaterial Kind="Pencil" Width="20" Height="20" Foreground="White" />
+                            </Button>
+
+                            <!-- Remove Button -->
+                            <Button
+                                Width="25"
+                                Height="25"
+                                Background="Transparent"
+                                BorderBrush="Transparent"
+                                HorizontalAlignment="Right"
+                                VerticalAlignment="Center"
+                                DockPanel.Dock="Right"
+                                Click="RemoveChannel_Click">
+                                <iconPacks:PackIconMaterial Kind="TrashCanOutline" Width="20" Height="20" Foreground="White" />
+                            </Button>
+                        </DockPanel>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </ScrollViewer>
     </Grid>
 </UserControl>

@@ -23,7 +23,7 @@ namespace MimersView.Desktop
             // Set the default content to the ProfileView with the username
             var profileView = new Views.Profile.Profileview
             {
-                Username = _username
+                Username = _username,
             };
 
             MainContent.Content = profileView;
